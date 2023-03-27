@@ -7,9 +7,20 @@ app.use(express.json())
 
 app.use(express.static(`${__dirname}/public`))
 
+var Rollbar = require('rollbar')
+var rollbar = new Rollbar({
+  accessToken: '80193c6f4e574bc5ba4969062aa5b81c',
+  captureUncaught: true,
+  captureUnhandledRejections: true,
+})
+
+// record a generic message and send it to Rollbar
+rollbar.log('Hello world!')
+
 app.get('/api/robots', (req, res) => {
     try {
-        res.status(200).send(botsArr)
+        rollbar.log('Hello World!!')
+        res.status(200).send(bots)
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
         res.sendStatus(400)
