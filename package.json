@@ -1,10 +1,10 @@
 {
   "name": "rollbar-test",
   "version": "1.0.0",
-  "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "start": "node server.js"
   },
   "keywords": [],
   "author": "",
@@ -21,5 +21,14 @@
     "ts-jest": "^27.0.7",
     "ts-node": "^10.4.0",
     "typescript": "^4.4.4"
-  }
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TaggartSalisbury06/assesment6.git"
+  },
+  "bugs": {
+    "url": "https://github.com/TaggartSalisbury06/assesment6/issues"
+  },
+  "homepage": "https://github.com/TaggartSalisbury06/assesment6#readme",
+  "description": ""
 }

@@ -19,7 +19,7 @@ rollbar.log('Hello world!')
 
 app.get('/api/robots', (req, res) => {
     try {
-        rollbar.log('Hello World!!')
+        rollbar.info('Cards were sent')
         res.status(200).send(bots)
     } catch (error) {
         console.log('ERROR GETTING BOTS', error)
@@ -34,13 +34,14 @@ app.get('/api/robots/five', (req, res) => {
         let compDuo = shuffled.slice(6, 8)
         res.status(200).send({choices, compDuo})
     } catch (error) {
-        console.log('ERROR GETTING FIVE BOTS', error)
+        console.log('ERROR GETTING FIVE BOTS', rollbar.critical('Cannot get all five robots'), error)
         res.sendStatus(400)
     }
 })
 
 app.post('/api/duel', (req, res) => {
     try {
+        rollbar.info('Duel started')
         // getting the duos from the front end
         let {compDuo, playerDuo} = req.body
 
@@ -65,7 +66,7 @@ app.post('/api/duel', (req, res) => {
             res.status(200).send('You won!')
         }
     } catch (error) {
-        console.log('ERROR DUELING', error)
+        console.log('ERROR DUELING', rollbar.warning('Does not duel'), error)
         res.sendStatus(400)
     }
 })

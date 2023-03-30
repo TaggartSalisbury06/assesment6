@@ -18,11 +18,18 @@ test('Title shows up when page loads', async () => {
     const displayed = await title.isDisplayed()
     expect(displayed).toBe(true)
 })
-describe('Robots functionality', () => {
-    it('draws robot cards', async () => {
+
+    test('draws robot cards', async () => {
         await driver.findElement(By.id('draw')).click()
+        const cards = await driver.findElement(By.id('all-bots'))
+        const displayed = await cards.isDisplayed()
+        await driver.sleep(50000)
+        expect(displayed).toBe(true)
     })
-    it('duels robot cards', async () => {
+    test('duels robot cards', async () => {
         await driver.findElement(By.id('duel')).click()
+        const newCards = await driver.findElement(By.id('choices'))
+        const displayed = await newCards.isDisplayed()
+        await driver.sleep(50000)
+        expect(displayed).toBe(true)
     })
-})
